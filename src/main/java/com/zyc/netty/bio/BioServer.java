@@ -28,6 +28,7 @@ public class BioServer {
         System.out.println("服务器启动了");
         while (true) {
             // 监听，等待客户端连接
+            System.out.println("等待连接....");
             final Socket socket = serverSocket.accept(); // 会阻塞
             System.out.println("连接到一个客户端");
 
@@ -44,13 +45,15 @@ public class BioServer {
     // 编写一个handler方法和客户端通讯
     public static void handler(Socket socket) {
         byte[] bytes = new byte[1024];
-        // 通过socket获取输入流
+        // 通过socket获取输入流(输入流是得到数据，输出流是输出数据。)
+        // 输入输出的方向是针对程序而言，向程序中读入数据，就是输入流；从程序中向外写出数据，就是输出流
         try {
-            System.out.println("线程信息 id=" + Thread.currentThread().getId() + "name = " + Thread.currentThread().getName());
+            System.out.println("线程信息 id=" + Thread.currentThread().getId() + " name = " + Thread.currentThread().getName());
             InputStream inputStream = socket.getInputStream();
             // 循环读取客户端发送的数据
             while (true) {
-                System.out.println("读取线程信息 id=" + Thread.currentThread().getId() + "name = " + Thread.currentThread().getName());
+                System.out.println("读取线程信息 id=" + Thread.currentThread().getId() + " name = " + Thread.currentThread().getName());
+                System.out.println("read....");
                 int read = inputStream.read(bytes);// 会阻塞
                 if (read != -1) {
                     System.out.println(new String(bytes, 0, read));// 输出客户端发送的数据
@@ -69,5 +72,4 @@ public class BioServer {
             }
         }
     }
-
 }
