@@ -45,9 +45,9 @@ public class NioServer {
                 continue;
             }
             // 如果返回的>0,就获取到相关的SelectionKey集合
-            // 1.如果返回的>0,表示已经获取到关注的实践
+            // 1.如果返回的>0,表示已经获取到关注的事件
             // 2.selector.selectedKeys()返回关注事件的集合
-            //   通过selectionKeys反向获取通道
+            //   通过 selectionKeys 反向获取通道
             Set<SelectionKey> selectionKeys = selector.selectedKeys();
             Iterator<SelectionKey> keyIterator = selectionKeys.iterator();
             while (keyIterator.hasNext()) {
