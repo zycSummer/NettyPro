@@ -34,7 +34,7 @@ public class TestServer {
                     .childHandler(new TestServerInitializer());
             System.out.println("服务器准备好了 is ready!!");
 
-            ChannelFuture channelFuture = serverBootstrap.bind(6688).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(6681).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
