@@ -9,6 +9,8 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * All Rights Reserved, Designed By www.jet-china.com.cn
@@ -22,6 +24,8 @@ import java.util.Date;
  * @Copyright: 2020 济中节能 All Rights Reserved.
  */
 public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> {
+    // 使用HashMap 管理 私聊扩展
+   //  public static Map<String, Channel> channelMap = new HashMap<>();
 
     // 定义一个channel组,管理所有的channel
     // GlobalEventExecutor.INSTANCE是个全局的事件执行器,是一个单例
@@ -40,6 +44,7 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
          */
         channelGroup.writeAndFlush("【客户端】" + " " + sdf.format(new Date()) + " " + channel.remoteAddress() + " 加入聊天\n");
         channelGroup.add(channel);
+//        channelMap.put("id100", channel);
     }
 
     // 断开连接,将xx客户离开信息推送给当前在线的客户
