@@ -20,7 +20,8 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         // 入站的handler进行解码 MyByteToLongDecoder
-        pipeline.addLast(new MyByteToLongDecoder());
+        pipeline.addLast(new MyByteToLongDecoder2());
+//        pipeline.addLast(new MyByteToLongDecoder());
         // 出站的handler进行编码 MyLongToByteEncoder
         pipeline.addLast(new MyLongToByteEncoder());
         // 自定义的handler 处理业务逻辑
