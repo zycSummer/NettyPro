@@ -1,4 +1,4 @@
-package com.zyc.netty.netty.inbound.ClientToServerLong;
+package com.zyc.netty.netty.inbound;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

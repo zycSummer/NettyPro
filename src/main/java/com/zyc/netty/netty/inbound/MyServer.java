@@ -1,4 +1,4 @@
-package com.zyc.netty.netty.inbound.ClientToServerLong;
+package com.zyc.netty.netty.inbound;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

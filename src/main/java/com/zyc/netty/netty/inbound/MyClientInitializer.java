@@ -1,4 +1,4 @@
-package com.zyc.netty.netty.inbound.ClientToServerLong;
+package com.zyc.netty.netty.inbound;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -11,17 +11,19 @@ import io.netty.channel.socket.SocketChannel;
  * @Package: com.jet.cloud.deepmind
  * @Description:
  * @author: 济中节能 zhuyicheng
- * @date: 2021/1/11 14:26
+ * @date: 2021/1/11 15:15
  * @version: V1.0
  * @Copyright: 2020 济中节能 All Rights Reserved.
  */
-public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
+public class MyClientInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        // 入站的handler进行解码 MyByteToLongDecoder
+        // 加入一个出站的handler 对数据进行一个编码
+        pipeline.addLast(new MyLongToByteEncoder());
+        // 加入一个入站的handler 对数据进行一个解码
         pipeline.addLast(new MyByteToLongDecoder());
-        // 自定义的handler 处理业务逻辑
-        pipeline.addLast(new MyServerHandler());
+        // 加入一个自定义的handler 处理业务
+        pipeline.addLast(new MyClientHandler());
     }
 }
