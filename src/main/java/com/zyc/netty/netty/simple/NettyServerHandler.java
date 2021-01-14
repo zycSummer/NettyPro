@@ -8,8 +8,6 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPipeline;
 import io.netty.util.CharsetUtil;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * All Rights Reserved, Designed By www.jet-china.com.cn
  *
